@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: backend
+    image: ${BACKEND_IMAGE:-fashion-backend:latest}
     container_name: fashion-backend
     ports:
       - "8000:8000"
@@ -22,6 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: frontend
+    image: ${FRONTEND_IMAGE:-fashion-frontend:latest}
     container_name: fashion-frontend
     ports:
       - "3000:3000"
@@ -29,3 +31,4 @@ services:
     depends_on:
       backend:
         condition: service_started
+
